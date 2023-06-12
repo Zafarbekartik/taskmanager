@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./mashq.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="otadiv">
+      <div class="bosh">
+        <div class="boshleft">
+          <div class="boshbtn"><i class="fa-solid fa-border-all"></i></div>
+          <div class="boshbtn"><i class="fa-solid fa-house"></i></div>
+        </div>
+        <div class="boshsearch">
+          <input type="search" placeholder="Search" />
+        </div>
+        <div class="boshright">
+          <div class="boshbtn"><i class="fa-solid fa-gear"></i></div>
+          <div class="boshbtn"><i class="fa-solid fa-question"></i></div>
+          <div class="boshbtn">
+            <i class="fa-solid fa-circle-half-stroke"></i>
+          </div>
+          <div class="boshbtn"><i class="fa-solid fa-user-tie"></i></div>
+        </div>
+      </div>
+      <div class="tana" id="task_tana">
+        <!-- // kategoriya -->
+        <div class="kategoriya" id="kategoriya">
+          <div style="width: 300px">
+            <!-- // kategoriya boshi -->
+            <div class="kategoriyabosh" id="kategoriyabosh">
+              <div><i class="fa-solid fa-bars"></i></div>
+            </div>
+
+            <!-- // kategoriya scroll -->
+
+            <div class="kategroiyascroll" id="kategoriyascroll">
+              <div class="taskgroup">
+                <div><i class="fa-solid fa-clipboard-list"></i></div>
+                <div>Tasks</div>
+              </div>
+              <div class="taskgroup">
+                <div><i class="fa-solid fa-clipboard-check"></i></div>
+                <div>Completed</div>
+              </div>
+              <hr style="width: 280px; border-radius: 100%" />
+
+              <!-- //yangi Task Folder qoshiladigan joyning boshlanishi -->
+
+              <div class="newtaskfolders" id="newTaskFolders">
+                <div class="taskgroup" id="taskgroup">
+                  <!-- <div id="taskFI"><i class="fa-solid fa-list"></i></div>
+                  <div id="taskFN"><p>Kutubxonaaaaaaaaaaaaaaaaaaa</p></div>
+                  <div id="taskCM" style="background-color: red">
+                    <i class="fa-solid fa-list"></i>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- // kategoriya pastki qismi -->
+
+          <div class="kategoriyabot" id="kategoriyabot">
+            <div class="inputCTF">
+              <input
+                type="text"
+                id="inputCTF"
+                placeholder="Add a task folder"
+                style="width: 200px"
+              />
+            </div>
+
+            <div class="createNF" id="createNF">
+              <i class="fa-solid fa-folder-plus"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- //tasklar boshlashdan avval kategoriyani tugatish kerak -->
+        <div class="tasklar" id="tasklar">
+          <!-- Tananing O'rtasidagi div -->
+          <div class="task_label" id="task_label">
+            <i class="fa-solid fa-bars"></i>
+            <div class="task_label value" id="task_label value">
+              <p id="task_name">Zafarbek</p>
+            </div>
+            <i class="fa-solid fa-ellipsis"></i>
+          </div>
+
+          <div class="for_add_tasks" id= ks">
+            <div class="add_task_input">
+              <input
+                type="text"
+                class="add_task_inputA"
+                id="add_task_inputA"
+                placeholder="Add a task"
+              />
+            </div>
+            <div class="add_task_button_wrapper">
+              <div>
+                <i class="fa-solid fa-calendar-days"></i>
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-repeat"></i>
+              </div>
+              <div><button>Add</button></div>
+            </div>
+          </div>
+
+          <div class="taskslist" id="taskslist">
+            <div class="folderchild" id="folderChild">
+              <div>
+                <input type="checkbox" />
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+              </div>
+              <div class="bookmark"><i class="fa-regular fa-bookmark"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="taskmalumot" id="taskmalumot">
+          class id
+          <h2>taskmalumot</h2>
+        </div>
+      </div>
+    </div>
+    <script src="./mashq.js"></script>
+  </body>
+</html>

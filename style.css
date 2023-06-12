@@ -1,0 +1,95 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.oyna {
+  width: 850px;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 30px;
+  padding: 0px 0px 10px 0px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 175);
+  box-shadow: 2px 2px 10px#aaaaaacc;
+}
+
+.markazlash {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.list1 {
+  width: 800px;
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+input {
+  width: 500px;
+  height: 30px;
+  font-size: 16px;
+  outline: none;
+  border: 0px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 10px#aaaaaacc;
+}
+
+.markazlash button {
+  width: 100px;
+  height: 32px;
+  font-size: 16px;
+  margin: 0px 5px;
+  border: 0px;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px#aaaaaacc;
+}
+
+.item_wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 5px;
+  border: 1px solid black;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-radius: 5px;
+  border-radius: 10px;
+}
+.item_wrapper p {
+  font-size: 18px;
+  margin: 5px;
+}
+
+.item_wrapper .content {
+  flex: 1;
+  height: 35px;
+}
+
+.item_wrapper .check {
+  width: 40px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item_wrapper .delete {
+  width: 40px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.delete button {
+  width: 29px;
+  height: 29px;
+}

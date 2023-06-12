@@ -1,0 +1,365 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+input {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+}
+
+.otadiv {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(250, 255, 255);
+}
+.bosh {
+  width: 100%;
+  height: 50px;
+  background-color: #1877f2;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+.bosh input {
+  width: 400px;
+  height: 30px;
+}
+
+.boshleft {
+  width: auto;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boshright {
+  width: auto;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boshbtn {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  transition: 500ms;
+}
+.boshsearch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.tana {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 50px);
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.bosh .boshbtn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+i,
+button:hover {
+  cursor: pointer;
+}
+
+#div {
+  transition-timing-function: ease;
+}
+/* //kategoriya //////////////////////////////////////////////////////////////// */
+.kategoriya {
+  width: 300px;
+  height: 100%;
+  border-style: solid;
+  border-width: 0 1px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+.kategoriyabosh {
+  height: 50px;
+  width: 100%;
+}
+.kategoriya i {
+  margin: 15px;
+}
+/* //kategoriya scroll ///////////////////////////////////////////////////////// */
+.kategroiyascroll {
+  width: 299px;
+  max-height: calc(100vh - 150px);
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(141, 141, 141);
+  border-radius: 10px;
+}
+.newtaskfolders {
+  width: 299px;
+  max-height: 825px;
+}
+
+.taskgroup {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  transition: 500ms;
+}
+.taskgroup:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.taskgroup p {
+  white-space: nowrap;
+  width: 199px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 1px;
+}
+.taskgroup p:hover {
+  cursor: pointer;
+}
+
+.kategoriyabot {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  border-color: lightgrey;
+}
+
+.kategoriyabot div:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: 500ms;
+}
+
+.kategoriyabot div:hover input {
+  background: none;
+}
+.kategoriyabot .inputCTF {
+  width: 250px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kategoriyabot input {
+  height: 30px;
+  width: 20px;
+}
+
+.createNF {
+  height: 45px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* //Tasklar /////////////////////////////////////////////////////////////////// */
+.tasklar {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  width: 100%;
+  height: 100%;
+}
+
+.task_label {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.task_label i {
+  margin: 15px;
+}
+
+.task_labelvalue {
+  max-width: 90%;
+}
+
+.task_label p {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.for_add_tasks {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.add_task_input {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 5px 1px rgb(231, 231, 231);
+  margin: 1px;
+  border: 1px solid lightgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add_task_inputA {
+  border: none;
+  width: 100%;
+  height: 40px;
+  margin: 20px;
+}
+
+.add_task_button_wrapper {
+  width: 100%;
+  height: 50px;
+  background-color: rgb(250, 255, 255);
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 0 5px 1px rgb(231, 231, 231);
+  margin: 1px;
+  border: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add_task_button_wrapper div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add_task_button_wrapper i {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-timing-function: ease;
+  transition: 500ms;
+  border-radius: 100%;
+}
+.add_task_button_wrapper i:hover {
+  background-color: rgb(224, 253, 255);
+  box-shadow: 0 0 5px 1px rgb(231, 231, 231);
+}
+
+.add_task_button_wrapper button {
+  width: 40px;
+  height: 30px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px solid lightgray;
+  box-shadow: 0 0 5px 1px rgb(224, 253, 255);
+  color: rgb(140, 140, 140);
+  font-weight: bold;
+  transition: 500ms;
+  text-align: center;
+}
+.add_task_button_wrapper button:hover {
+  box-shadow: 0 0 5px 1px lightgray;
+  background-color: rgb(224, 253, 255);
+}
+
+.taskslist {
+  width: 100%;
+  max-height: calc(100vh - 220px);
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.taskslist .folderchild {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  box-shadow: 0 0 5px 1px lightgray;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.taskslist .folderchild div {
+  display: flex;
+  align-content: center;
+  max-width: 95%;
+}
+.taskslist .folderchild input {
+  margin: 15px;
+}
+.taskslist .folderchild p {
+  margin: 10px;
+  max-width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  line-height: 26px;
+}
+
+.folderchild .bookmark {
+  width: 50px;
+  height: 20px;
+  /* background-color: aquamarine; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+
+/* //taskmalumot ////////////////////////////////////////////////////////////// */
+.taskmalumot {
+  width: 400px;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  border-style: solid;
+  border-width: 0 0 0 1px;
+  background-color: white;
+}
