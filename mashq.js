@@ -1,162 +1,137 @@
 const elt = (name, className) => {
-  let element = document.createElement(name);
-  if (className != null) element.className = className;
-  return element;
-};
-const gId = (idName) => document.getElementById(idName);
-const createNF = gId("createNF");
-const inputCTF = document.getElementById("inputCTF");
-const cateScroll = document.getElementById("newTaskFolders");
-const tasklar = document.getElementById("tasklar");
+  let element = document.createElement(name)
+  if (className != null) element.className = className
+  return element
+}
+const gId = (idName) => document.getElementById(idName)
 
-const allTasks = JSON.parse(localStorage.getItem("category")) ?? [];
-console.log(allTasks);
-const Tasks = JSON.parse(localStorage.getItem("Tasks")) ?? {};
-console.log(Tasks);
+let CURRENT_TASK_NAME = ""
+
+const createNF = gId("createNF")
+const inputCTF = gId("inputCTF")
+const cateScroll = gId("newTaskFolders")
+const addBtn = gId("task_add_button")
+
+const tasksWrapper = gId("task_list")
+const adder = gId("task_adder")
+const label = gId("task_label")
+const subTaskInput = gId("sub_task_inputA")
+
+subTaskInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") addNewTask()
+})
+
+const allTasks = JSON.parse(localStorage.getItem("category")) ?? []
+console.log(allTasks)
+const Tasks = JSON.parse(localStorage.getItem("Tasks")) ?? {}
+console.log(Tasks)
+
 createNF.addEventListener("click", () => {
-  const valueTF = inputCTF.value;
-  console.log(allTasks);
+  const valueTF = inputCTF.value
+  console.log(allTasks)
   if (valueTF != "" && !allTasks.includes(valueTF)) {
-    inputCTF.value = "";
-    allTasks.push(valueTF);
-    Tasks[valueTF] = [];
-    save();
-    render();
+    inputCTF.value = ""
+    allTasks.push(valueTF)
+    Tasks[valueTF] = []
+    save()
+    render()
   }
-});
+})
 
 function save() {
-  localStorage.setItem("category", JSON.stringify(allTasks));
-  localStorage.setItem("Tasks", JSON.stringify(Tasks));
+  localStorage.setItem("category", JSON.stringify(allTasks))
+  localStorage.setItem("Tasks", JSON.stringify(Tasks))
 }
+
+const addNewTask = () => {
+  let inputVal = subTaskInput.value
+  if (inputVal !== "" && !Tasks[CURRENT_TASK_NAME].includes(inputVal)) {
+    Tasks[CURRENT_TASK_NAME].push(inputVal)
+    tasklistyarat()
+    save()
+    subTaskInput.value = ""
+  }
+}
+
+addBtn.addEventListener("click", addNewTask)
 
 function render() {
-  cateScroll.innerHTML = "";
+  cateScroll.innerHTML = ""
   allTasks.forEach((task) => {
-    let taskGroupnew = document.createElement("div");
-    taskGroupnew.className = "taskgroup";
-    const taskFI = document.createElement("div");
-    const taskFN = document.createElement("div");
-    const taskCM = document.createElement("div");
-    const taskIcon = document.createElement("i");
-    taskIcon.className = "fa-solid fa-list";
-    const taskName = document.createElement("p");
-    taskName.textContent = task;
-    const taskContextMenu = document.createElement("i");
-    taskContextMenu.className = "fa-solid fa-ellipsis-vertical";
-    cateScroll.appendChild(taskGroupnew);
-    taskGroupnew.appendChild(taskFI);
-    taskGroupnew.appendChild(taskFN);
-    taskGroupnew.appendChild(taskCM);
-    taskFI.appendChild(taskIcon);
-    taskFN.appendChild(taskName);
-    taskCM.appendChild(taskContextMenu);
+    let taskGroupnew = document.createElement("div")
+    taskGroupnew.className = "taskgroup"
+    const taskFI = document.createElement("div")
+    const taskFN = document.createElement("div")
+    const taskCM = document.createElement("div")
+    const taskIcon = document.createElement("i")
+    taskIcon.className = "fa-solid fa-list"
+    const taskName = document.createElement("p")
+    taskName.textContent = task
+    const taskContextMenu = document.createElement("i")
+    taskContextMenu.className = "fa-solid fa-ellipsis-vertical"
+    cateScroll.appendChild(taskGroupnew)
+    taskGroupnew.appendChild(taskFI)
+    taskGroupnew.appendChild(taskFN)
+    taskGroupnew.appendChild(taskCM)
+    taskFI.appendChild(taskIcon)
+    taskFN.appendChild(taskName)
+    taskCM.appendChild(taskContextMenu)
     taskGroupnew.addEventListener("click", () => {
-      tasklistyarat(task);
-    });
-  });
+      CURRENT_TASK_NAME = task
+      showAdder()
+      tasklistyarat(task)
+    })
+  })
 }
 
-function tasklistyarat(task) {
-  tasklar.innerHTML = "";
-  const taskLabel = document.createElement("div");
-  taskLabel.className = "tasklabel";
-  const iBar = document.createElement("i");
-  iBar.className = "fa-solid fa-bars";
-  const taskLabelValue = document.createElement("div");
-  taskLabelValue.className = "tasklabelvalue";
-  const taskLabelValueP = document.createElement("p");
-  taskLabelValueP.textContent = task;
-  const ellipsis = document.createElement("i");
-  ellipsis.className = "fa-solid fa-ellipsis";
-  tasklar.append(taskLabel);
-  taskLabel.appendChild(iBar);
-  taskLabel.appendChild(taskLabelValue);
-  taskLabelValue.appendChild(taskLabelValueP);
-  taskLabel.appendChild(ellipsis);
-  // TaskLabel yaratildi endi tasklarni qoshishimiz uchun foraddatask ni yaratishimiz kerak
-  const forAdd_aTasks = document.createElement("div");
-  forAdd_aTasks.className = "foraddatasks";
-  const add_aTaskInput = document.createElement("div");
-  add_aTaskInput.className = "addataskinput";
-  const addataskinputA = document.createElement("input");
-  addataskinputA.className = "addataskinputA";
-  addataskinputA.addEventListener("keydown", (e) => {
-    let input = e.target;
-
-    if (
-      e.key === "Enter" &&
-      input.value !== "" &&
-      !Tasks[task].includes(input.value)
-    ) {
-      Tasks[task].push(input.value);
-      save();
-      folderChildyarat(input.value);
-    }
-  });
-  const addataskAdd = document.createElement("div");
-  addataskAdd.className = "addataskadd";
-  const chapTugmalar = document.createElement("div");
-  const tugmaCalendar = document.createElement("i");
-  tugmaCalendar.className = "fa-solid fa-calendar-days";
-  const tugmaBell = document.createElement("i");
-  tugmaBell.className = "fa-solid fa-bell";
-  const tugmaRepeat = document.createElement("i");
-  tugmaRepeat.className = "fa-solid fa-repeat";
-  const ungTugma = document.createElement("div");
-  const tugmaButton = document.createElement("button");
-  tugmaButton.textContent = "Add";
-  tasklar.appendChild(forAdd_aTasks);
-  forAdd_aTasks.appendChild(add_aTaskInput);
-  add_aTaskInput.appendChild(addataskinputA);
-  forAdd_aTasks.appendChild(addataskAdd);
-  addataskAdd.appendChild(chapTugmalar);
-  chapTugmalar.appendChild(tugmaCalendar);
-  chapTugmalar.appendChild(tugmaBell);
-  chapTugmalar.appendChild(tugmaRepeat);
-  addataskAdd.appendChild(ungTugma);
-  ungTugma.appendChild(tugmaButton);
-  tugmaButton.addEventListener("click", () => {
-    const addInput = addataskinputA.value;
-    if (addInput != "" && !Tasks[task].includes(addInput)) {
-      addataskinputA.value = "";
-      Tasks[task].push(addInput);
-      save();
-      folderChildyarat(addInput);
-    }
-  });
-  console.log(task);
-  if (Tasks[task].length > 0) {
-    let list = gId("tasklistasds");
-    if (list != null) list.innerHTML = "";
-    Tasks[task].forEach((item) => {
-      folderChildyarat(item);
-    });
+function tasklistyarat() {
+  label.querySelector("p").innerText = CURRENT_TASK_NAME
+  tasksWrapper.innerHTML = ""
+  if (Tasks[CURRENT_TASK_NAME]?.length > 0) {
+    Tasks[CURRENT_TASK_NAME].reverse().forEach((item) => {
+      folderChildyarat(item)
+    })
   }
 }
 
 function folderChildyarat(item) {
-  const taskslist = document.createElement("div");
-  taskslist.className = "taskslist";
-  taskslist.id = "tasklist";
-  const folderchild = document.createElement("div");
-  folderchild.className = "folderchild";
-  const folderchilddiv = document.createElement("div");
-  const folderchildinp = document.createElement("input");
-  folderchildinp.type = "checkbox";
-  const folderchildp = document.createElement("p");
-  folderchildp.textContent = item;
-  const folderchildBMark = document.createElement("div");
-  folderchildBMark.className = "bookmark";
-  const fChildBookMark = document.createElement("i");
-  fChildBookMark.className = "fa-regular fa-bookmark";
-  tasklar.appendChild(taskslist);
-  taskslist.appendChild(folderchild);
-  folderchild.appendChild(folderchilddiv);
-  folderchilddiv.appendChild(folderchildinp);
-  folderchilddiv.appendChild(folderchildp);
-  folderchild.appendChild(folderchildBMark);
-  folderchildBMark.appendChild(fChildBookMark);
+  const folderchild = document.createElement("div")
+  folderchild.className = "folderchild"
+  folderchild.id = item
+  const folderchilddiv = document.createElement("div")
+  const folderchildinp = document.createElement("input")
+  folderchildinp.type = "checkbox"
+  const folderchildp = document.createElement("p")
+  folderchildp.textContent = item
+  const folderchildBMark = document.createElement("div")
+  folderchildBMark.className = "bookmark"
+  const fChildBookMark = elt("i", "fa fa-bookmark")
+  const deleteBtn = elt("i", "fa fa-trash red-btn")
+  deleteBtn.addEventListener("click", () => {
+    Tasks[CURRENT_TASK_NAME] = Tasks[CURRENT_TASK_NAME].filter(
+      (task) => task !== item,
+    )
+    save()
+    let self = gId(item)
+    self.parentNode.removeChild(self)
+  })
+  let actionWrapper = elt("div")
+  actionWrapper.appendChild(fChildBookMark)
+  actionWrapper.appendChild(deleteBtn)
+  tasksWrapper.appendChild(folderchild)
+  folderchild.appendChild(folderchilddiv)
+  folderchilddiv.appendChild(folderchildinp)
+  folderchilddiv.appendChild(folderchildp)
+  folderchild.appendChild(actionWrapper)
 }
 
-render();
+render()
+
+const showAdder = () => {
+  if (CURRENT_TASK_NAME !== "") {
+    adder.style.display = "block"
+  } else {
+    adder.style.display = "none"
+  }
+}
+showAdder()

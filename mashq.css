@@ -363,3 +363,7 @@ button:hover {
   border-width: 0 0 0 1px;
   background-color: white;
 }
+
+.red-btn {
+  color: red;
+}
