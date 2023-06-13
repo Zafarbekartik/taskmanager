@@ -136,16 +136,42 @@ button:hover {
   align-items: center;
   transition: 500ms;
 }
+.defined_area {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  transition: 500ms;
+  background: rgb(24, 119, 242);
+  background: linear-gradient(
+    90deg,
+    rgb(0, 25, 255) 0%,
+    rgba(224, 255, 255) 2%,
+    rgba(224, 255, 255) 100%
+  );
+}
 .taskgroup:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
-
+.defined_area:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
 .taskgroup p {
   white-space: nowrap;
   width: 199px;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 1px;
+}
+.defined_area p {
+  white-space: nowrap;
+  width: 199px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 1px;
+}
+.defined_area p:hover {
+  cursor: pointer;
 }
 .taskgroup p:hover {
   cursor: pointer;
@@ -346,7 +372,7 @@ button:hover {
   height: 20px;
   /* background-color: aquamarine; */
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 15px;
 }
