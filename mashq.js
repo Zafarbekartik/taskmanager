@@ -46,7 +46,7 @@ function save() {
 const addNewTask = () => {
   let inputVal = subTaskInput.value;
   if (inputVal !== "" && !Tasks[CURRENT_TASK_NAME].includes(inputVal)) {
-    Tasks[CURRENT_TASK_NAME].push(inputVal);
+    Tasks[CURRENT_TASK_NAME].unshift(inputVal);
     tasklistyarat();
     save();
     subTaskInput.value = "";
@@ -76,7 +76,7 @@ function render() {
     taskFI.appendChild(taskIcon);
     taskFN.appendChild(taskName);
     taskCM.appendChild(taskContextMenu);
-    taskGroupnew.id = task + "1";
+    taskGroupnew.id = task;
     taskGroupnew.addEventListener("click", (item) => {
       CURRENT_TASK_NAME = task;
       showAdder();
@@ -88,17 +88,17 @@ function render() {
 
 function active_Task_Folder() {
   allTasks.forEach((item) => {
-    if (item + "1" === CURRENT_TASK_NAME)
-      gId(item).classList.add("defined_area");
-    else gId(item + "1").classList.remove("defined_area");
+    if (item === CURRENT_TASK_NAME) gId(item).classList.add("defined_area");
+    else gId(item).classList.remove("defined_area");
   });
 }
 
 function tasklistyarat() {
+  console.log(Tasks[CURRENT_TASK_NAME]);
   label.querySelector("p").innerText = CURRENT_TASK_NAME;
   tasksWrapper.innerHTML = "";
-  if (Tasks[CURRENT_TASK_NAME]?.length > 0) {
-    Tasks[CURRENT_TASK_NAME].reverse().forEach((item) => {
+  if (Tasks[CURRENT_TASK_NAME].length > 0) {
+    Tasks[CURRENT_TASK_NAME].forEach((item) => {
       folderChildyarat(item);
     });
   }
