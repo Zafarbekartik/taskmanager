@@ -26,7 +26,7 @@ console.log(allTasks);
 const Tasks = JSON.parse(localStorage.getItem("Tasks")) ?? {};
 console.log(Tasks);
 
-createNF.addEventListener("click", () => {
+createNF.addEventListener("click", function folderAdd() {
   const valueTF = inputCTF.value;
   console.log(allTasks);
   if (valueTF != "" && !allTasks.includes(valueTF)) {
@@ -76,7 +76,7 @@ function render() {
     taskFI.appendChild(taskIcon);
     taskFN.appendChild(taskName);
     taskCM.appendChild(taskContextMenu);
-    taskGroupnew.id = task;
+    taskGroupnew.id = task + "1";
     taskGroupnew.addEventListener("click", (item) => {
       CURRENT_TASK_NAME = task;
       showAdder();
@@ -88,8 +88,9 @@ function render() {
 
 function active_Task_Folder() {
   allTasks.forEach((item) => {
-    if (item === CURRENT_TASK_NAME) gId(item).classList.add("defined_area");
-    else gId(item).classList.remove("defined_area");
+    if (item + "1" === CURRENT_TASK_NAME)
+      gId(item).classList.add("defined_area");
+    else gId(item + "1").classList.remove("defined_area");
   });
 }
 
@@ -116,6 +117,7 @@ function folderChildyarat(item) {
   folderchildBMark.className = "bookmark";
   const fChildBookMark = elt("i", "fa-regular fa-bookmark");
   const deleteBtn = elt("i", "fa fa-trash red-btn");
+  //  /////////////////////////////////////////////////////////////////
   deleteBtn.addEventListener("click", () => {
     Tasks[CURRENT_TASK_NAME] = Tasks[CURRENT_TASK_NAME].filter(
       (task) => task !== item
