@@ -23,8 +23,14 @@ subTaskInput.addEventListener("keydown", (e) => {
 
 const allTasks = JSON.parse(localStorage.getItem("category")) ?? [];
 console.log(allTasks);
-const Tasks = JSON.parse(localStorage.getItem("Tasks")) ?? {};
+const Tasks = JSON.parse(localStorage.getItem("Tasks")) ?? {
+  names: {},
+  checked: {},
+  bookmark: {},
+};
 console.log(Tasks);
+let theme_localhost = localStorage.getItem("theme") ?? "light";
+console.log(theme_localhost);
 
 createNF.addEventListener("click", function folderAdd() {
   const valueTF = inputCTF.value;
@@ -32,7 +38,9 @@ createNF.addEventListener("click", function folderAdd() {
   if (valueTF != "" && !allTasks.includes(valueTF)) {
     inputCTF.value = "";
     allTasks.push(valueTF);
-    Tasks[valueTF] = [];
+    Tasks.names = { valueTF };
+    Tasks.checked = "false";
+    Tasks.bookmark = "tanlangan";
     save();
     render();
   }
@@ -41,6 +49,7 @@ createNF.addEventListener("click", function folderAdd() {
 function save() {
   localStorage.setItem("category", JSON.stringify(allTasks));
   localStorage.setItem("Tasks", JSON.stringify(Tasks));
+  localStorage.setItem("theme", theme_localhost);
 }
 
 const addNewTask = () => {
@@ -54,6 +63,15 @@ const addNewTask = () => {
 };
 
 addBtn.addEventListener("click", addNewTask);
+
+const theme = document.getElementById("dark_light");
+
+theme.addEventListener("click", () => {
+  if (theme_localhost == "light") theme_localhost = "dark";
+  else theme_localhost = "light";
+  save();
+  // funksiya qilish kerak
+});
 
 function render() {
   cateScroll.innerHTML = "";
@@ -111,6 +129,7 @@ function folderChildyarat(item) {
   const folderchilddiv = document.createElement("div");
   const folderchildinp = document.createElement("input");
   folderchildinp.type = "checkbox";
+  folderchildinp.checked = false;
   const folderchildp = document.createElement("p");
   folderchildp.textContent = item;
   const folderchildBMark = document.createElement("div");
